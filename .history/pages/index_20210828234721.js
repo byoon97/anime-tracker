@@ -18,7 +18,9 @@ const Container = styled.div`
 
 export const getStaticProps = async () => {
   //we can use await here because it is an asynchronous function
-  const res = await fetch("https://kitsu.io/api/edge/trending/anime");
+  const res = await fetch(
+    "https://kitsu.io/api/edge/anime/?filter%5Bseason%5D=summer"
+  );
 
   //turning the response into a json object
   const anime = await res.json();
