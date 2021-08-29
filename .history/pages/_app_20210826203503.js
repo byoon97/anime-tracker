@@ -1,9 +1,7 @@
 import "../styles/globals.css";
 import styled from "styled-components";
 
-const MainLayout = styled.div`
-  background-color: rgb(32, 40, 50);
-`;
+const MainLayout = styled.div``;
 
 function MyApp({ Component, pageProps }) {
   return (

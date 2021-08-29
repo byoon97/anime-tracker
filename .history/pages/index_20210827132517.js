@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import Header from "./components/Header";
-import NavBar from "./components/NavBar";
-import SeasonalAnime from "./components/SeasonalAnime";
 
 const Container = styled.div`
   margin-bottom: 0;
@@ -11,7 +9,7 @@ const Container = styled.div`
   text-align: left;
   width: 1060px;
   height: 100%;
-  background-color: rgb(32, 40, 50);
+  background-color: #0b0d10;
 `;
 
 //Fetching Anime API Data through nextJS function getStaticProps
@@ -34,8 +32,6 @@ export default function Home({ anime }) {
   return (
     <Container>
       <Header />
-      <NavBar />
-      <SeasonalAnime />
     </Container>
   );
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import SeasonalAnime from "./components/SeasonalAnime";
 
 const Container = styled.div`
   margin-bottom: 0;
@@ -35,7 +34,6 @@ export default function Home({ anime }) {
     <Container>
       <Header />
       <NavBar />
-      <SeasonalAnime />
     </Container>
   );
 }
