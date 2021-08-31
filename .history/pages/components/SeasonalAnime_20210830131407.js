@@ -11,7 +11,7 @@ let URL = "https://kitsu.io/api/edge/anime/?filter%5Bseason%5D=summer";
 
 const Container = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 13rem;
   background-color: rgb(70, 162, 159);
   margin-top: 2rem;
   display: flex;
@@ -21,10 +21,15 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  margin-bottom: 8rem;
+  margin-top: 5reml;
 `;
 
-const SeasonContainer = styled.div``;
+const PosterList = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
 
 const fetcher = (URL) => fetch(URL).then((res) => res.json());
 
@@ -37,7 +42,9 @@ function SeasonalAnime() {
   return (
     <Container>
       <Title>Summer 2021 Anime</Title>
-      <AnimeList {...animes} />
+      <PosterList>
+        <AnimeList animes={animes} />
+      </PosterList>
     </Container>
   );
 }
