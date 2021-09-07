@@ -46,7 +46,7 @@ function AnimeList(props) {
     <>
       {animes.map((anime) => {
         return (
-          <Link href={"/anime/" + anime.id} passHref key={anime.id}>
+          <Link href="/test" passHref key={anime.id}>
             <AnimePosterDiv data-tip data-for={anime.id}>
               <ReactTooltip id={anime.id} place="right" effect="solid">
                 <ToolTip>
