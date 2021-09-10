@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import styled from "styled-components";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import store from "./store";
 
 const MainLayout = styled.div`
   background-color: rgb(32, 40, 50);

@@ -4,6 +4,7 @@ import ReactTooltip from "react-tooltip";
 import StarIcon from "@material-ui/icons/Star";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const AnimePosterDiv = styled.div`
   display: flex;
@@ -40,13 +41,21 @@ const ToolTipRating = styled.div`
 const Synopsis = styled.div``;
 
 function AnimeList(props) {
-  let animes = props.animes;
+  //   let animes = props.animes;
+  const animes = useSelector((state) => state.animes);
+  console.log(animes);
 
   return (
     <>
       {animes.map((anime) => {
         return (
-          <Link href={"/anime/" + anime.id} passHref key={anime.id}>
+          <Link
+            href={{
+              pathname: `/anime/` + anime.id,
+            }}
+            passHref
+            key={anime.id}
+          >
             <AnimePosterDiv data-tip data-for={anime.id}>
               <ReactTooltip id={anime.id} place="right" effect="solid">
                 <ToolTip>
@@ -77,3 +86,15 @@ function AnimeList(props) {
 }
 
 export default AnimeList;
+
+{
+  /* <Link
+  href={{
+    pathname: `/anime/[title]`,
+    query: {
+      title: anime.id, // should be `title` not `id`
+    },
+  }}
+  as={`/anime/${anime.attributes.canonicalTitle}`}
+></Link> */
+}

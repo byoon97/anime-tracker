@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Header from "../components/Header";
-import NavBar from "../components/NavBar";
-import Trending from "../components/Trending";
-import HighestRated from "../components/MostPopular";
-import TopAiring from "../components/TopAiring";
-import MostPopular from "../components/HighestRated";
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+import Trending from "./components/Trending";
+import HighestRated from "./components/MostPopular";
+import TopAiring from "./components/TopAiring";
+import MostPopular from "./components/HighestRated";
 
 const Container = styled.div`
   margin-bottom: 0;
