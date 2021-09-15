@@ -2,11 +2,26 @@ import "../styles/globals.css";
 import styled from "styled-components";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import NavBar from "../components/NavBar";
+import Header from "../components/Header";
 
 const MainLayout = styled.div`
   background-color: rgb(32, 40, 50);
   height: 100%;
-  z-index: -3;
+  z-index: -1;
+`;
+
+const Container = styled.div`
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  position: relative;
+  width: 1100px;
+  height: 100%;
+  background-color: rgb(32, 40, 50);
 `;
 
 const BgImage = styled.figure`
@@ -24,7 +39,11 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <MainLayout>
         <BgImage />
-        <Component {...pageProps} />
+        <Container>
+          <Header />
+          <NavBar />
+          <Component {...pageProps} />
+        </Container>
       </MainLayout>
     </Provider>
   );

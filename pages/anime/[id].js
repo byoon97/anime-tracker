@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
 import LeftColumn from "../../components/AnimePageComponents/LeftColumn";
 import RightColumn from "../../components/AnimePageComponents/RightColumn";
 
@@ -58,8 +56,6 @@ export default function AnimePage(props) {
   // console.log(anime);
   return (
     <Container>
-      <Header />
-      <NavBar />
       <TitleDiv>
         {anime.attributes.canonicalTitle}...
         <JpTitle>{anime.attributes.titles.ja_jp}</JpTitle>
