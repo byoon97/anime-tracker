@@ -70,7 +70,7 @@ export default function LeftColumn({ props }) {
   const attributes = props.attributes;
   return (
     <Container>
-      <AnimeCover src={attributes.posterImage.small} />
+      <AnimeCover src={props.attributes.posterImage.small} />
       <AddToList>
         <ButtonContainer>
           <ListActionButtons>Add to Watch List</ListActionButtons>
@@ -86,15 +86,14 @@ export default function LeftColumn({ props }) {
         Information
         <br />
         {/* Age Rating, AgeRatingGuide, startDate, endDate, episodeCount, status */}
-        <Attribute>English: {attributes.titles.en}</Attribute>
-        <Attribute>Japanese: {attributes.titles.ja_jp}</Attribute>
-        <Attribute>Japanese-Romaji: {attributes.titles.en_jp}</Attribute>
-        <Attribute>Type: {attributes.showType}</Attribute>
-        <Attribute>Episode count: {attributes.episodeCount}</Attribute>
-        <Attribute>
-          Aired: {attributes.startDate} to {attributes.endDate}
-        </Attribute>
-        <Attribute>Status: {attributes.status}</Attribute>
+        <Attribute>English: {}</Attribute>
+        <Attribute>Japanese:</Attribute>
+        <Attribute>Japanese-Romaji:</Attribute>
+        <Attribute>Type:</Attribute>
+        <Attribute>Episode count:</Attribute>
+        <Attribute>Aired:</Attribute>
+        <Attribute>Status:</Attribute>
+        <Attribute>Rating:</Attribute>
         <Attribute>Producers:</Attribute>
         <Attribute>Licensors:</Attribute>
         <Attribute>Studios:</Attribute>
@@ -102,9 +101,9 @@ export default function LeftColumn({ props }) {
       {/* <HorizontalLine /> */}
       <Line />
       <Statistics>
-        <Attribute>Popularity Rank: {attributes.popularityRank}</Attribute>
-        <Attribute>Rating Rank: {attributes.ratingRank}</Attribute>
-        <Attribute>Users Favorited: {attributes.favoritesCount}</Attribute>
+        <Attribute>Popularity Rank:</Attribute>
+        <Attribute>Rating Rank:</Attribute>
+        <Attribute>Users Favorited:</Attribute>
       </Statistics>
     </Container>
   );

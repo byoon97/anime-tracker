@@ -41,7 +41,7 @@ export default function RightColumn({ props }) {
       <PageLinks>
         <Link
           href={{
-            pathname: `/anime/` + props.id,
+            pathname: `/anime/` + props.id + "/episodes",
           }}
           passHref
         >
@@ -57,7 +57,7 @@ export default function RightColumn({ props }) {
         </Link>
         <Link
           href={{
-            pathname: `/anime/` + props.id + "/characters",
+            pathname: `/anime/` + props.id + "/episodes",
           }}
           passHref
         >

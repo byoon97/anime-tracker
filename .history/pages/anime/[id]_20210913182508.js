@@ -4,11 +4,6 @@ import NavBar from "../../components/NavBar";
 import LeftColumn from "../../components/AnimePageComponents/LeftColumn";
 import RightColumn from "../../components/AnimePageComponents/RightColumn";
 
-//To Do List..
-//add lines seperating components
-//create links for Episodes, Characters
-//Clean up Page
-
 export async function getServerSideProps(context) {
   const anime = await fetch(
     "https://kitsu.io/api/edge/anime/" + context.query.id
@@ -55,7 +50,7 @@ const PageContainer = styled.div`
 
 export default function AnimePage(props) {
   const { anime } = props;
-  // console.log(anime);
+  console.log(anime);
   return (
     <Container>
       <Header />

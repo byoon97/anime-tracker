@@ -55,7 +55,7 @@ const PageContainer = styled.div`
 
 export default function AnimePage(props) {
   const { anime } = props;
-  // console.log(anime);
+  console.log(anime);
   return (
     <Container>
       <Header />
