@@ -102,9 +102,9 @@ export default function LeftColumn({ props }) {
       {/* <HorizontalLine /> */}
       <Line />
       <Statistics>
-        <Attribute>Popularity Rank: {attributes.popularityRank}</Attribute>
-        <Attribute>Rating Rank: {attributes.ratingRank}</Attribute>
-        <Attribute>Users Favorited: {attributes.favoritesCount}</Attribute>
+        <Attribute>Popularity Rank:</Attribute>
+        <Attribute>Rating Rank:</Attribute>
+        <Attribute>Users Favorited:</Attribute>
       </Statistics>
     </Container>
   );

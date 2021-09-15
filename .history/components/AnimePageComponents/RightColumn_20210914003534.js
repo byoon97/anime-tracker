@@ -39,28 +39,13 @@ export default function RightColumn({ props }) {
   return (
     <Container>
       <PageLinks>
-        <Link
-          href={{
-            pathname: `/anime/` + props.id,
-          }}
-          passHref
-        >
+        <Link>
           <Links>Details</Links>
         </Link>
-        <Link
-          href={{
-            pathname: `/anime/` + props.id + "/episodes",
-          }}
-          passHref
-        >
+        <Link>
           <Links>Episodes</Links>
         </Link>
-        <Link
-          href={{
-            pathname: `/anime/` + props.id + "/characters",
-          }}
-          passHref
-        >
+        <Link>
           <Links>Characters</Links>
         </Link>
       </PageLinks>
