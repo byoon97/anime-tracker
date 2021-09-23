@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import LeftColumn from "../../../components/AnimePageComponents/LeftColumn";
+import RightColumn from "../../../components/AnimePageComponents/RightColumn";
+import TitleContainer from "../../../components/AnimePageComponents/TitleContainer";
 
 let animeChar = [];
 
@@ -9,6 +12,13 @@ export async function getServerSideProps(context) {
   )
     .then((r) => r.json())
     .then((r) => r.data);
+
+  // const anime = await fetch(
+  //   "https://kitsu.io/api/edge/anime/" + context.query.id
+  // )
+  //   .then((r) => r.json())
+  //   .then((r) => r.data);
+
   return {
     props: { characters },
   };
@@ -23,11 +33,11 @@ export function getChars(props, arr) {
 }
 
 export default function Characters(props) {
-  //   const [animeID, setAnimeID] = useState(queryID);
-  useEffect(() => {
-    animeChar.length = 0;
-    getChars(props, animeChar);
-  });
-  console.log(animeChar);
+  console.log(props);
+  // useEffect(() => {
+  //   animeChar.length = 0;
+  //   getChars(props, animeChar);
+  // }, []);
+
   return <div>hello</div>;
 }
