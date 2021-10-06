@@ -85,7 +85,6 @@ export default function LeftColumn({ props }) {
         <Attribute></Attribute>
         Information
         <br />
-        {/* Age Rating, AgeRatingGuide, startDate, endDate, episodeCount, status */}
         <Attribute>English: {attributes.titles.en}</Attribute>
         <Attribute>Japanese: {attributes.titles.ja_jp}</Attribute>
         <Attribute>Japanese-Romaji: {attributes.titles.en_jp}</Attribute>
@@ -99,7 +98,6 @@ export default function LeftColumn({ props }) {
         <Attribute>Licensors:</Attribute>
         <Attribute>Studios:</Attribute>
       </Information>
-      {/* <HorizontalLine /> */}
       <Line />
       <Statistics>
         <Attribute>Popularity Rank: {attributes.popularityRank}</Attribute>

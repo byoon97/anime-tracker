@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import LeftColumn from "../../../components/AnimePageComponents/LeftColumn";
-import RightColumn from "../../../components/AnimePageComponents/RightColumn";
-import TitleContainer from "../../../components/AnimePageComponents/TitleContainer";
+import MainLayout from "../../../components/AnimePageComponents/MainLayout";
 
-let animeChar = [];
+let charList = [];
+
+// Fetching Anime and Character Data
 
 export async function getServerSideProps(context) {
   const characters = await fetch(
@@ -13,16 +13,18 @@ export async function getServerSideProps(context) {
     .then((r) => r.json())
     .then((r) => r.data);
 
-  // const anime = await fetch(
-  //   "https://kitsu.io/api/edge/anime/" + context.query.id
-  // )
-  //   .then((r) => r.json())
-  //   .then((r) => r.data);
+  const anime = await fetch(
+    "https://kitsu.io/api/edge/anime/" + context.query.id
+  )
+    .then((r) => r.json())
+    .then((r) => r.data);
 
   return {
-    props: { characters },
+    props: { anime, characters },
   };
 }
+
+// Function to loop through json data and fetch individual character data
 
 export function getChars(props, arr) {
   props.characters.forEach((chars) => {
@@ -32,12 +34,13 @@ export function getChars(props, arr) {
   });
 }
 
-export default function Characters(props) {
-  console.log(props);
-  // useEffect(() => {
-  //   animeChar.length = 0;
-  //   getChars(props, animeChar);
-  // }, []);
+// CSS -------------------------------
 
-  return <div>hello</div>;
+export default function Characters(props) {
+  useEffect(() => {
+    charList.length = 0;
+    getChars(props, charList);
+  });
+
+  return <MainLayout props={props.anime} character={charList}></MainLayout>;
 }

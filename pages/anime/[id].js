@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import TitleContainer from "../../components/AnimePageComponents/TitleContainer";
-import LeftColumn from "../../components/AnimePageComponents/LeftColumn";
-import RightColumn from "../../components/AnimePageComponents/RightColumn";
-
-//To Do List..
-//add lines seperating components
-//create links for Episodes, Characters
-//Clean up Page
+import MainLayout from "../../components/AnimePageComponents/MainLayout";
 
 export async function getServerSideProps(context) {
   const anime = await fetch(
@@ -19,23 +12,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-`;
-
-export default function AnimePage(props) {
-  const { anime } = props;
-  // console.log(anime);
-  return (
-    <div>
-      <TitleContainer props={anime} />
-      <PageContainer>
-        <LeftColumn props={anime} />
-        <RightColumn props={anime} />
-      </PageContainer>
-    </div>
-  );
+export default function AnimePage({ anime }) {
+  return <MainLayout props={anime}></MainLayout>;
 }
