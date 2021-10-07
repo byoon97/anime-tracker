@@ -104,15 +104,3 @@ function AnimeList(props) {
 }
 
 export default AnimeList;
-
-{
-  /* <Link
-  href={{
-    pathname: `/anime/[title]`,
-    query: {
-      title: anime.id, // should be `title` not `id`
-    },
-  }}
-  as={`/anime/${anime.attributes.canonicalTitle}`}
-></Link> */
-}
