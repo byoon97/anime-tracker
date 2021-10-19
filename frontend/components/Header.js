@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
+import Router from "next/router";
+import { destroyCookie } from "nookies";
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +15,7 @@ const Container = styled.div`
 const LogoContainer = styled.div`
   font-size: 2em;
   color: rgb(102, 252, 241);
+  cursor: pointer;
 `;
 
 const ButtonContainer = styled.div`
@@ -21,7 +25,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const LogIn = styled.button`
+const LogInOut = styled.button`
   border-color: rgb(102, 252, 241);
   background-color: #0b0d10;
   color: rgb(102, 252, 241);
@@ -48,13 +52,28 @@ const SignUp = styled.button`
   width: 90px;
 `;
 
-function Header() {
+function Header(props) {
+  async function handleLogOut() {
+    destroyCookie(null, "jwt");
+    props.handleClick(false);
+
+    Router.push("/login");
+  }
+
   return (
     <Container>
-      <LogoContainer>Anime Tracker</LogoContainer>
+      <Link href="/" passHref>
+        <LogoContainer>Anime Tracker</LogoContainer>
+      </Link>
       <ButtonContainer>
-        <LogIn>Log In</LogIn>
-        <SignUp>Sign Up</SignUp>
+        {props.prop ? (
+          <LogInOut onClick={() => handleLogOut()}>Sign Out</LogInOut>
+        ) : (
+          <Link href="/login" passHref>
+            <LogInOut>Log In</LogInOut>
+          </Link>
+        )}
+        {props.prop ? <SignUp>My Profile</SignUp> : <SignUp>Sign Up</SignUp>}
       </ButtonContainer>
     </Container>
   );
