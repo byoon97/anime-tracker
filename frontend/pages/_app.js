@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "../store/store";
 import NavBar from "../components/NavBar";
 import Header from "../components/Header";
+import { useState, useEffect } from "react";
 
 const MainLayout = styled.div`
   background-color: rgb(32, 40, 50);
@@ -34,18 +35,44 @@ const BgImage = styled.figure`
   margin-left: 0.06rem;
 `;
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, props }) {
+  const [loggedIn, setloggedIn] = useState(false);
+
+  useEffect(() => {
+    props.cookies ? setloggedIn(true) : setloggedIn(false);
+  }, []);
+
+  const changeUserStatus = () => {
+    setloggedIn();
+  };
+
+  console.log("is a user logged in?", loggedIn);
+
   return (
     <Provider store={store}>
       <MainLayout>
         <BgImage />
         <Container>
-          <Header />
+          <Header prop={loggedIn} handleClick={changeUserStatus} />
           <NavBar />
-          <Component {...pageProps} />
+          <Component {...pageProps} handleClick={changeUserStatus} />
         </Container>
       </MainLayout>
     </Provider>
   );
 }
+
+MyApp.getInitialProps = async ({ ctx }) => {
+  const cookies =
+    typeof window === "undefined" ? ctx.req.headers.cookie : document.cookie;
+
+  return {
+    props: {
+      cookies,
+    },
+  };
+};
+
 export default MyApp;
+
+//`http://localhost:1337/auth/local`
