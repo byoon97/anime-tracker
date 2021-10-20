@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Router from "next/router";
 import { setCookie } from "nookies";
-import Link from "next/link";
 
 //ADD ERROR HANDLING
 
@@ -16,7 +15,7 @@ const Container = styled.div`
   width: 654.5px;
 `;
 
-const LogInContainer = styled.div`
+const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,38 +34,38 @@ const InputFields = styled.div`
 
 const Input = styled.input``;
 
-const SignIn = styled.button``;
-
 const SignUp = styled.button``;
 
-export default function Login(props) {
+export default function Register(props) {
   console.log("login", props);
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
 
   //Log In logic
-  async function handleLogin() {
-    const loginInfo = {
-      identifier: username,
+  async function handleRegister() {
+    const registerInfo = {
+      username: username,
+      email: email,
       password: password,
     };
 
-    const login = await fetch(`http://localhost:1337/auth/local`, {
+    const register = await fetch(`http://localhost:1337/auth/local/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginInfo),
+      body: JSON.stringify(registerInfo),
     });
 
-    const loginResponse = await login.json();
+    const registerResponse = await register.json();
 
-    if (loginResponse.error) {
-      setError(loginResponse.message[0].messages[0].message);
+    if (registerResponse.error) {
+      setError(registerResponse.message[0].messages[0].message);
     } else {
-      setCookie(null, "jwt", loginResponse.jwt, {
+      setCookie(null, "jwt", registerResponse.jwt, {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });
@@ -79,13 +78,23 @@ export default function Login(props) {
 
   return (
     <Container>
-      <LogInContainer>
+      <RegisterContainer>
         <InputFields>
           Username{" "}
           <Input
-            type="email"
+            type="text"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
+            placeholder="Username"
+          />
+        </InputFields>
+        <InputFields>
+          Email{" "}
+          <Input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="Email"
           />
         </InputFields>
         <InputFields>
@@ -94,14 +103,12 @@ export default function Login(props) {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            placeholder="Password"
           />
         </InputFields>
-        <SignIn onClick={() => handleLogin()}>Sign In</SignIn>
-        <Link href="/Register" passHref>
-          <SignUp>Sign Up</SignUp>
-        </Link>
+        <SignUp onClick={() => handleRegister()}>Register</SignUp>
         {error ? error : null}
-      </LogInContainer>
+      </RegisterContainer>
     </Container>
   );
 }

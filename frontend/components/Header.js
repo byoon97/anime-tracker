@@ -52,7 +52,7 @@ const SignUp = styled.button`
   width: 90px;
 `;
 
-function Header(props) {
+export default function Header(props) {
   async function handleLogOut() {
     destroyCookie(null, "jwt");
     props.handleClick(false);
@@ -73,10 +73,16 @@ function Header(props) {
             <LogInOut>Log In</LogInOut>
           </Link>
         )}
-        {props.prop ? <SignUp>My Profile</SignUp> : <SignUp>Sign Up</SignUp>}
+        {props.prop ? (
+          <Link href="/Profile" passHref>
+            <SignUp>My Profile</SignUp>
+          </Link>
+        ) : (
+          <Link href="/Register" passHref>
+            <SignUp>Sign Up</SignUp>
+          </Link>
+        )}
       </ButtonContainer>
     </Container>
   );
 }
-
-export default Header;

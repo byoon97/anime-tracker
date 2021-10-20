@@ -6,6 +6,9 @@ import NavBar from "../components/NavBar";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 
+//fix rendering method for the anime pages
+//fix state of logged in user between components
+
 const MainLayout = styled.div`
   background-color: rgb(32, 40, 50);
   height: 100%;
@@ -42,10 +45,6 @@ function MyApp({ Component, pageProps, props }) {
     props.cookies ? setloggedIn(true) : setloggedIn(false);
   }, []);
 
-  const changeUserStatus = () => {
-    setloggedIn();
-  };
-
   console.log("is a user logged in?", loggedIn);
 
   return (
@@ -53,9 +52,9 @@ function MyApp({ Component, pageProps, props }) {
       <MainLayout>
         <BgImage />
         <Container>
-          <Header prop={loggedIn} handleClick={changeUserStatus} />
+          <Header prop={loggedIn} handleClick={setloggedIn} />
           <NavBar />
-          <Component {...pageProps} handleClick={changeUserStatus} />
+          <Component {...pageProps} handleClick={setloggedIn} />
         </Container>
       </MainLayout>
     </Provider>
