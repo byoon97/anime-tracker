@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchIcon from "@material-ui/icons/Search";
+import SearchBar from "./SearchBar";
 
 const Container = styled.nav`
   height: 2rem;
@@ -26,19 +26,6 @@ const MenuItems = styled.li`
   margin-left: 1rem;
 `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const SearchBar = styled.input`
-  border: none;
-  height: 1.25rem;
-  width: 15rem;
-  margin-right: 1rem;
-`;
-
 function NavBar() {
   return (
     <Container>
@@ -48,10 +35,7 @@ function NavBar() {
         <MenuItems>Seasons</MenuItems>
         <MenuItems>Community</MenuItems>
       </NavLinks>
-      <SearchContainer>
-        <SearchBar placeholder="Search Anime, Mange, and More!..." />
-        <SearchIcon />
-      </SearchContainer>
+      <SearchBar />
     </Container>
   );
 }
